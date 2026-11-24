@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADUSCF | Adigrat University Christian Student Fellowship</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --navy: #102c50;
+      --dark-navy: #0b1f3a;
+      --teal: #176b68;
+      --gold: #e5b84b;
+      --bg: #f3f5f8;
+      --ink: #17243b;
+      --muted: #64748b;
+      --line: #ccd3df;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 16px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--gold);
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 5px;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    nav a:hover, nav a.active-link {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--gold);
+    }
+    .nav-btn {
+      background: var(--gold);
+      color: var(--navy) !important;
+    }
+    .nav-btn:hover {
+      background: #f0c75e;
+    }
+
+    /* Views Management */
+    .page-view {
+      display: block;
+    }
+    .hidden {
+      display: none !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 20px;
+      font-size: 17px;
+    }
+    .btn {
+      display: inline-block;
+      margin: 8px 6px 0;
+      padding: 12px 24px;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      border-radius: 7px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+    }
+
+    /* Sections & Cards */
+    section.home-sec {
+      padding: 55px 7%;
+      text-align: center;
+    }
+    h2 {
+      color: var(--navy);
+      margin-bottom: 16px;
+      font-size: 28px;
+    }
+    h3 {
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin-top: 25px;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+    }
+
+    /* Forms & Containers */
+    .container {
+      max-width: 760px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+    .form-card {
+      background: white;
+      padding: 28px;
+      border-radius: 13px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 15px 0 6px;
+      color: var(--navy);
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-size: 15px;
+      background: white;
+    }
+    button.submit-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 22px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--teal);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button.gold-btn {
+      background: var(--gold);
+      color: var(--navy);
+    }
+    button.secondary {
+      background: #e8edf4;
+      color: var(--navy);
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button.danger {
+      background: #f5d9d9;
+      color: #842020;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.small {
+      padding: 7px 10px;
+      margin: 2px;
+      font-size: 12px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Payment & Notices */
+    .payment {
+      background: var(--navy);
+      color: white;
+      padding: 18px;
+      border-radius: 9px;
+      line-height: 1.8;
+      margin: 12px 0;
+    }
+    .payment strong {
+      color: var(--gold);
+    }
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .status-msg {
+      font-weight: bold;
+      color: #15803d;
+      margin-top: 14px;
+      padding: 10px;
+      background: #dcfce7;
+      border-radius: 6px;
+    }
+    .warning {
+      background: #fff5dc;
+      border-left: 4px solid var(--gold);
+      padding: 12px;
+      border-radius: 6px;
+      color: #57451b;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    /* Admin Dashboard */
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    @media(min-width: 600px) {
+      .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    .stat {
+      background: #f3f5f8;
+      border-radius: 10px;
+      padding: 14px;
+      border-left: 4px solid var(--teal);
+    }
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      color: var(--navy);
+      margin-top: 4px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 680px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #e4e8ef;
+      vertical-align: top;
+    }
+    th {
+      background: #f3f5f8;
+      color: var(--navy);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+      margin-top: 40px;
+      border-top: 3px solid var(--gold);
+    }
+    footer p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION HEADER -->
+  <header>
+    <div class="logo" onclick="switchView('homeView')">ADUSCF</div>
+    <nav>
+      <a onclick="goToHomeSection('home')">Home</a>
+      <a onclick="goToHomeSection('about')">About</a>
+      <a onclick="goToHomeSection('teams')">Teams</a>
+      <a onclick="goToHomeSection('programs')">Programs</a>
+      <a class="nav-btn" onclick="switchView('memberRegView')">Join Fellowship</a>
+      <a class="nav-btn" onclick="switchView('retreatView')">Retreat</a>
+      <a onclick="switchView('adminLoginView')">Admin</a>
+    </nav>
+  </header>
+
+  <!-- ==================== 1. HOME VIEW ==================== -->
+  <div id="homeView" class="page-view">
+    <div class="hero" id="home">
+      <h1>Welcome to ADUSCF</h1>
+      <p>
+        Adigrat University Christian Student Fellowship.
+        Growing together in faith, love, worship and service.
+      </p>
+      <button class="btn" onclick="switchView('memberRegView')">Join Our Fellowship</button>
+      <button class="btn btn-outline" onclick="switchView('retreatView')">Retreat Registration</button>
+    </div>
+
+    <section id="about" class="home-sec">
+      <h2>About Us</h2>
+      <p style="max-width: 720px; margin: auto;">
+        We are a Christian student fellowship at Adigrat University,
+        committed to knowing Christ, growing in faith and serving others.
+      </p>
+    </section>
+
+    <section id="teams" class="home-sec" style="background: #eaf0f6;">
+      <h2>Our Fellowship Teams</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>FUND</h3>
+          <p>Building unity and friendship.</p>
+        </div>
+        <div class="card">
+          <h3>EVANGE MOBILIZER</h3>
+          <p>Growing together in Christian love.</p>
+        </div>
+        <div class="card">
+          <h3>Worship Team</h3>
+          <p>Serving God through worship.</p>
+        </div>
+        <div class="card">
+          <h3>Bible Study Team</h3>
+          <p>Learning and sharing God's Word.</p>
+        </div>
+        <div class="card">
+          <h3>Love and Care Team</h3>
+          <p>Caring for one another.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="home-sec">
+      <h2>Our Programs</h2>
+      <div class="cards">
+        <div class="card"><h3>General Fellowship</h3></div>
+        <div class="card"><h3>Prayer Program</h3></div>
+        <div class="card"><h3>Worship Program</h3></div>
+        <div class="card"><h3>Bible Study</h3></div>
+        <div class="card"><h3>Retreat</h3></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== 2. FELLOWSHIP MEMBER REGISTRATION VIEW ==================== -->
+  <div id="memberRegView" class="page-view hidden">
+    <div class="container">
+      <div class="form-card">
+        <div class="toolbar">
+          <h2>Join Our Fellowship</h2>
+          <button class="secondary small" onclick="switchView('homeView')">← Back to Home</button>
+        </div>
+        <p class="note">Please fill in your student fellowship information correctly.</p>
+
+        <form id="memberForm">
+          <h3 style="margin-top:20px;">Personal Information</h3>
+          <label>Membership Type *</label>
+          <select id="m_membership" required>
+            <option value="">Select</option>
+            <option>New Member</option>
+            <option>Existing Member</option>
+          </select>
+
+          <label>Full Name *</label>
+          <input id="m_fullName" required placeholder="Enter your full name">
+
+          <label>Gender *</label>
+          <select id="m_gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+
+          <label>Phone Number *</label>
+          <input id="m_phone" type="tel" required placeholder="09XXXXXXXX">
+
+          <label>Email</label>
+          <input id="m_email" type="email" placeholder="Optional">
+
+          <h3 style="margin-top:22px;">University Information</h3>
+          <label>Department *</label>
+          <input id="m_department" required placeholder="Your department">
+
+          <label>Year of Study *</label>
+          <select id="m_year" required>
+            <option value="">Select Year</option>
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+            <option>5th Year</option>
+            <option>Other</option>
+          </select>
+
+          <h3 style="margin-top:22px;">Church & Fellowship Information</h3>
+          <label>Local Church Service / Ministry</label>
+          <select id="m_service">
+            <option value="">Select Service</option>
+            <option>Worship</option>
+            <option>Choir</option>
+            <option>Sunday School</option>
+            <option>Evangelism</option>
+            <option>Other</option>
+          </select>
+
+          <label>Fellowship Team *</label>
+          <select id="m_team" required>
+            <option value="">Select Your Team</option>
+            <option>Fund Team</option>
+            <option>Evangelism Mobilizers Team</option>
+            <option>Bible Study Team</option>
+            <option>Worship Team</option>
+            <option>Love and Care Team</option>
+          </select>
+
+          <label>Baptism Status</label>
+          <select id="m_baptism">
+            <option value="">Select Status</option>
+            <option>Baptized</option>
+            <option>Not Baptized</option>
+            <option>Prefer not to say</option>
+          </select>
+
+          <p class="note">Your registration will be reviewed by the fellowship administrator.</p>
+          <button type="submit" class="submit-btn">Submit Fellowship Registration</button>
+          <p id="memberMessage" class="status-msg hidden"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 3. RETREAT REGISTRATION VIEW ==================== -->
+  <div id="retreatView" class="page-view hidden">
+    <div class="hero" style="padding: 45px 15px;">
+      <div style="font-size: 13px; letter-spacing: 2px; color: #fff;">CHRISTIAN STUDENT FELLOWSHIP</div>
+      <h1>ADUSCF RETREAT</h1>
+      <p>ONE FAITH. ONE FAMILY. • Worship • Prayer • Fellowship • Spiritual Growth</p>
+    </div>
+
+    <div class="container">
+      <div class="form-card">
+        <div class="toolbar">
+          <h3>Retreat Registration</h3>
+          <button class="secondary small" onclick="switchView('homeView')">← Back to Home</button>
+        </div>
+        <p class="note">Please complete the form below to register for the retreat.</p>
+
+        <form id="retreatForm">
+          <label for="r_name">Full Name *</label>
+          <input id="r_name" required placeholder="Enter full name">
+
+          <label for="r_gender">Gender *</label>
+          <select id="r_gender" required>
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+
+          <label for="r_phone">Phone Number *</label>
+          <input id="r_phone" type="tel" required placeholder="09XXXXXXXX">
+
+          <label for="r_university">University *</label>
+          <input id="r_university" required value="Adigrat University">
+
+          <label for="r_department">Department *</label>
+          <input id="r_department" required placeholder="Your department">
+
+          <label for="r_church">Church Name *</label>
+          <input id="r_church" required placeholder="Enter your church name">
+
+          <label for="r_team">Fellowship Team *</label>
+          <select id="r_team" required>
+            <option value="">Select your team</option>
+            <option>Worship Team</option>
+            <option>Prayer Team</option>
+            <option>Evangelism Mobilizers Team</option>
+            <option>Bible Study Team</option>
+            <option>Love and Care Team</option>
+            <option>Fund Team</option>
+          </select>
+
+          <h3 style="margin-top:22px;">Retreat Contribution</h3>
+          <p class="note">There is no fixed payment amount. Give according to your ability.</p>
+
+          <label for="r_amount">Contribution Amount (ETB) *</label>
+          <input id="r_amount" type="number" min="1" required placeholder="Enter amount in Birr">
+
+          <label for="r_method">Payment Method *</label>
+          <select id="r_method" required>
+            <option value="">Select payment method</option>
+            <option>CBE Bank Transfer</option>
+            <option>Telebirr</option>
+          </select>
+
+          <label for="r_reference">Transaction Reference</label>
+          <input id="r_reference" placeholder="Enter transaction reference">
+
+          <button type="submit" class="submit-btn gold-btn">SUBMIT RETREAT REGISTRATION</button>
+          <p id="retreatMessage" class="status-msg hidden"></p>
+        </form>
+      </div>
+
+      <div class="form-card">
+        <h3>Official Payment Information</h3>
+        <div class="payment">
+          <strong>Bank:</strong> Commercial Bank of Ethiopia<br>
+          <strong>Account Name:</strong> ADIGRAT UNIVERSITY CHRISTIAN STUDENT FELLOWSHIP<br>
+          <strong>Other Method:</strong> Telebirr
+        </div>
+        <p class="note">Please verify payment details with the authorized fellowship organizers before transferring money. Your contribution will be confirmed by the organizers.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 4. ADMIN LOGIN VIEW ==================== -->
+  <div id="adminLoginView" class="page-view hidden">
+    <div class="container">
+      <div class="form-card">
+        <div class="toolbar">
+          <h3>Admin Login</h3>
+          <button class="secondary small" onclick="switchView('homeView')">Back to Home</button>
+        </div>
+        <p class="note">Default Demo Password: <strong>admin123</strong></p>
+        <label for="adminPassword">Admin Password</label>
+        <input id="adminPassword" type="password" placeholder="Enter admin password">
+        <button class="submit-btn" onclick="loginAdmin()">LOGIN</button>
+        <p id="loginMessage" class="note" style="color: #dc2626; font-weight: bold;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. ADMIN DASHBOARD VIEW ==================== -->
+  <div id="adminDashboardView" class="page-view hidden">
+    <div class="container" style="max-width: 960px;">
+      <div class="form-card">
+        <div class="toolbar">
+          <div>
+            <h2>ADUSCF Admin Dashboard</h2>
+            <p class="note">Overview of Retreat & Fellowship Registrations</p>
+          </div>
+          <button class="secondary" onclick="logoutAdmin()">LOG OUT</button>
+        </div>
+
+        <div class="warning">
+          <strong>Storage Notice:</strong> Registrations are saved locally in this browser. Export CSV regularly to keep backups.
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat">Retreat Regs<strong id="totalCount">0</strong></div>
+          <div class="stat">Total Contributions<strong id="totalAmount">0 ETB</strong></div>
+          <div class="stat">Pending Payments<strong id="pendingCount">0</strong></div>
+          <div class="stat">Fellowship Members<strong id="memberCount">0</strong></div>
+        </div>
+
+        <!-- Retreat Registrations Table -->
+        <div class="toolbar" style="margin-top:25px;">
+          <h3>1. Retreat Registered Students</h3>
+          <div>
+            <button class="small gold-btn" onclick="exportRetreatCSV()">EXPORT RETREAT CSV</button>
+            <button class="small secondary" onclick="refreshDashboard()">REFRESH</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name / ID</th>
+                <th>Phone</th>
+                <th>Dept / Church</th>
+                <th>Team</th>
+                <th>Contribution</th>
+                <th>Payment</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="registrationsTable">
+              <tr><td colspan="7">No retreat registrations saved yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Fellowship Members Table -->
+        <div class="toolbar" style="margin-top:35px;">
+          <h3>2. Fellowship Member Registrations</h3>
+          <div>
+            <button class="small gold-btn" onclick="exportMembersCSV()">EXPORT MEMBERS CSV</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Type / Gender</th>
+                <th>Phone</th>
+                <th>Dept / Year</th>
+                <th>Fellowship Team</th>
+                <th>Service / Baptism</th>
+              </tr>
+            </thead>
+            <tbody id="membersTable">
+              <tr><td colspan="6">No fellowship member registrations saved yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>ADUSCF</strong>
+    <p>ADIGRAT UNIVERSITY CHRISTIAN STUDENT FELLOWSHIP</p>
+    <p>Growing in Christ • Serving in Love</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const RETREAT_KEY = "aduscfRegistrations";
+    const MEMBER_KEY = "aduscfMembers";
+    const ADMIN_PASSWORD = "admin123"; // You can change this password
+
+    // Page Switching Logic
+    function switchView(viewId) {
+      document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+      document.getElementById(viewId).classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    function goToHomeSection(sectionId) {
+      switchView('homeView');
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+    }
+
+    // Storage Helpers
+    function getData(key) {
+      try { return JSON.parse(localStorage.getItem(key) || "[]"); }
+      catch (e) { return []; }
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, c => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[c]));
+    }
+
+    // 1. Fellowship Member Registration Submit
+    document.getElementById("memberForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const member = {
+        id: "MEM-" + Date.now(),
+        membership: document.getElementById("m_membership").value,
+        fullName: document.getElementById("m_fullName").value.trim(),
+        gender: document.getElementById("m_gender").value,
+        phone: document.getElementById("m_phone").value.trim(),
+        email: document.getElementById("m_email").value.trim(),
+        department: document.getElementById("m_department").value.trim(),
+        year: document.getElementById("m_year").value,
+        service: document.getElementById("m_service").value,
+        team: document.getElementById("m_team").value,
+        baptism: document.getElementById("m_baptism").value,
+        submittedAt: new Date().toISOString()
+      };
+
+      const members = getData(MEMBER_KEY);
+      members.push(member);
+      localStorage.setItem(MEMBER_KEY, JSON.stringify(members));
+
+      const msg = document.getElementById("memberMessage");
+      msg.textContent = "Welcome to ADUSCF, " + member.fullName + "! Your registration is saved.";
+      msg.classList.remove("hidden");
+      this.reset();
+    });
+
+    // 2. Retreat Registration Submit
+    document.getElementById("retreatForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const registration = {
+        id: "ADUSCF-" + Date.now(),
+        name: document.getElementById("r_name").value.trim(),
+        gender: document.getElementById("r_gender").value,
+        phone: document.getElementById("r_phone").value.trim(),
+        university: document.getElementById("r_university").value.trim(),
+        department: document.getElementById("r_department").value.trim(),
+        church: document.getElementById("r_church").value.trim(),
+        team: document.getElementById("r_team").value,
+        amount: Number(document.getElementById("r_amount").value),
+        method: document.getElementById("r_method").value,
+        reference: document.getElementById("r_reference").value.trim(),
+        paymentStatus: "Pending",
+        submittedAt: new Date().toISOString()
+      };
+
+      const data = getData(RETREAT_KEY);
+      data.push(registration);
+      localStorage.setItem(RETREAT_KEY, JSON.stringify(data));
+
+      const msg = document.getElementById("retreatMessage");
+      msg.textContent = "Retreat registration saved! Your ID: " + registration.id;
+      msg.classList.remove("hidden");
+      this.reset();
+      document.getElementById("r_university").value = "Adigrat University";
+    });
+
+    // 3. Admin Login & Dashboard
+    function loginAdmin() {
+      const entered = document.getElementById("adminPassword").value;
+      if (entered === ADMIN_PASSWORD) {
+        document.getElementById("loginMessage").textContent = "";
+        document.getElementById("adminPassword").value = "";
+        switchView('adminDashboardView');
+        refreshDashboard();
+      } else {
+        document.getElementById("loginMessage").textContent = "Incorrect password. Try 'admin123'.";
+      }
+    }
+
+    function logoutAdmin() {
+      switchView('homeView');
+    }
+
+    function refreshDashboard() {
+      const retreatData = getData(RETREAT_KEY);
+      const memberData = getData(MEMBER_KEY);
+
+      // Update Stats
+      document.getElementById("totalCount").textContent = retreatData.length;
+      document.getElementById("totalAmount").textContent = retreatData.reduce((sum, r) => sum + (Number(r.amount) || 0), 0).toLocaleString() + " ETB";
+      document.getElementById("pendingCount").textContent = retreatData.filter(r => (r.paymentStatus || "Pending") === "Pending").length;
+      document.getElementById("memberCount").textContent = memberData.length;
+
+      // Render Retreat Table
+      const rTbody = document.getElementById("registrationsTable");
+      if (!retreatData.length) {
+        rTbody.innerHTML = '<tr><td colspan="7">No retreat registrations saved yet.</td></tr>';
+      } else {
+        rTbody.innerHTML = retreatData.map((r, i) => `<tr>
+          <td><strong>${escapeHTML(r.name)}</strong><br><span class="note">${escapeHTML(r.id)}</span></td>
+          <td>${escapeHTML(r.phone)}</td>
+          <td>${escapeHTML(r.department)}<br><span class="note">${escapeHTML(r.church)}</span></td>
+          <td>${escapeHTML(r.team)}</td>
+          <td><strong>${Number(r.amount || 0).toLocaleString()} ETB</strong><br><span class="note">Ref: ${escapeHTML(r.reference || 'N/A')}</span></td>
+          <td><strong>${escapeHTML(r.paymentStatus || "Pending")}</strong><br><span class="note">${escapeHTML(r.method || "")}</span></td>
+          <td>
+            <button class="small gold-btn" onclick="setPaymentStatus(${i},'Approved')">Approve</button>
+            <button class="small danger" onclick="setPaymentStatus(${i},'Pending')">Pending</button>
+          </td>
+        </tr>`).join("");
+      }
+
+      // Render Members Table
+      const mTbody = document.getElementById("membersTable");
+      if (!memberData.length) {
+        mTbody.innerHTML = '<tr><td colspan="6">No fellowship member registrations saved yet.</td></tr>';
+      } else {
+        mTbody.innerHTML = memberData.map(m => `<tr>
+          <td><strong>${escapeHTML(m.fullName)}</strong><br><span class="note">${escapeHTML(m.email || '')}</span></td>
+          <td>${escapeHTML(m.membership)}<br><span class="note">${escapeHTML(m.gender)}</span></td>
+          <td>${escapeHTML(m.phone)}</td>
+          <td>${escapeHTML(m.department)}<br><span class="note">${escapeHTML(m.year)}</span></td>
+          <td>${escapeHTML(m.team)}</td>
+          <td>${escapeHTML(m.service || '-')}<br><span class="note">${escapeHTML(m.baptism || '-')}</span></td>
+        </tr>`).join("");
+      }
+    }
+
+    function setPaymentStatus(index, status) {
+      const data = getData(RETREAT_KEY);
+      if (!data[index]) return;
+      data[index].paymentStatus = status;
+      localStorage.setItem(RETREAT_KEY, JSON.stringify(data));
+      refreshDashboard();
+    }
+
+    // CSV Exports
+    function downloadCSV(filename, columns, data) {
+      if (!data.length) { alert("No data available to export."); return; }
+      const csv = [
+        columns.join(","),
+        ...data.map(r => columns.map(k => '"' + String(r[k] ?? "").replace(/"/g, '""') + '"').join(","))
+      ].join("\n");
+      const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportRetreatCSV() {
+      const cols = ["id", "name", "gender", "phone", "university", "department", "church", "team", "amount", "method", "reference", "paymentStatus", "submittedAt"];
+      downloadCSV("ADUSCF-Retreat-Registrations.csv", cols, getData(RETREAT_KEY));
+    }
+
+    function exportMembersCSV() {
+      const cols = ["id", "membership", "fullName", "gender", "phone", "email", "department", "year", "service", "team", "baptism", "submittedAt"];
+      downloadCSV("ADUSCF-Fellowship-Members.csv", cols, getData(MEMBER_KEY));
+    }
+  </script>
+</body>
+</html>
+github.com
