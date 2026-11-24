@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADUSCF — Adigrat University Christian Students' Fellowship</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --surface-soft: #f0f4fa;
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --primary-light: #dbeafe;
+      --accent: #0f766e;
+      --accent-light: #ccfbf1;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --success: #15803d;
+      --success-light: #dcfce7;
+      --warning: #b45309;
+      --warning-light: #fef3c7;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 10px -6px rgba(15, 23, 42, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      cursor: pointer;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: grid;
+      place-items: center;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    .nav-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3.5rem;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #0f766e 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 2.25rem 1.75rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.98rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* Cards & Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.15rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Buttons & Badges */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      border: none;
+      border-radius: 10px;
+      padding: 0.7rem 1.15rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--primary-dark);
+    }
+
+    .btn-light:hover {
+      background: var(--surface-soft);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: #fff;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .btn-sm {
+      padding: 0.42rem 0.75rem;
+      font-size: 0.8rem;
+      border-radius: 8px;
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pill-open {
+      background: var(--success-light);
+      color: var(--success);
+    }
+
+    .pill-closed {
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+
+    /* Forms */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.68rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      background: #fff;
+      color: var(--text);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    .alert {
+      padding: 0.9rem 1rem;
+      border-radius: 11px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .alert-success {
+      background: var(--success-light);
+      color: var(--success);
+      border: 1px solid #86efac;
+    }
+
+    .alert-danger {
+      background: var(--danger-light);
+      color: var(--danger);
+      border: 1px solid #fca5a5;
+    }
+
+    .alert-warning {
+      background: var(--warning-light);
+      color: var(--warning);
+      border: 1px solid #fcd34d;
+    }
+
+    /* Lists & Contact Rows */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .phone-link {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .phone-link:hover {
+      text-decoration: underline;
+    }
+
+    .payment-box {
+      background: var(--surface-soft);
+      border: 1px dashed #93c5fd;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .payment-row {
+      margin-bottom: 0.45rem;
+      font-size: 0.9rem;
+    }
+
+    .payment-row:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Admin */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .stat-box {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .stat-num {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 0.75rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    th {
+      background: var(--surface-soft);
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .telegram-banner {
+      margin-top: 1.25rem;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="brand" onclick="navigate('home')">
+        <div class="brand-badge">ADUSCF</div>
+        <div>
+          <div class="brand-title">ADUSCF</div>
+          <div class="brand-sub">Adigrat University Christian Students' Fellowship</div>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-page="home" onclick="navigate('home')">Home</button>
+        <button class="nav-btn" data-page="register" onclick="navigate('register')">Member Registration</button>
+        <button class="nav-btn" data-page="retreat" onclick="navigate('retreat')">Retreat</button>
+        <button class="nav-btn" data-page="contacts" onclick="navigate('contacts')">Contact Us & Leaders</button>
+        <button class="nav-btn" data-page="admin" onclick="navigate('admin')">Admin</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME PAGE -->
+    <section id="page-home" class="page active">
+      <div class="hero">
+        <span class="hero-tag">Adigrat University • Fellowship Portal</span>
+        <h1>Welcome to ADUSCF Fellowship & Registration Hub</h1>
+        <p>
+          Connect with fellowship teams, register as a new or continuing member, check fellowship retreat status,
+          and reach GF advisors or ministry team leaders directly.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-light" onclick="navigate('register')">Register as Member</button>
+          <button class="btn btn-outline" onclick="navigate('retreat')">Retreat Registration</button>
+          <a class="btn btn-outline" href="https://t.me/httpaducsf" target="_blank" rel="noopener noreferrer">Join Telegram Group</a>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Fellowship Registration</h3>
+          <p class="muted" style="margin-bottom: 1rem;">
+            Submit your student details and choose your preferred fellowship team or ministry.
+          </p>
+          <button class="btn btn-primary btn-sm" onclick="navigate('register')">Open Form</button>
+        </div>
+
+        <div class="card">
+          <h3>Retreat Registration Status</h3>
+          <p class="muted" style="margin-bottom: 0.75rem;">
+            Controlled live by the Admin. Opens when a retreat program is active and closes when unavailable.
+          </p>
+          <div id="home-retreat-status" style="margin-bottom: 0.9rem;">
+            <span class="pill pill-closed">Checking status...</span>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="navigate('retreat')">Go to Retreat</button>
+        </div>
+
+        <div class="card">
+          <h3>GF & Team Leaders</h3>
+          <p class="muted" style="margin-bottom: 1rem;">
+            View direct phone numbers for GF members, ministry team leaders, payment details, and our Telegram group.
+          </p>
+          <button class="btn btn-primary btn-sm" onclick="navigate('contacts')">View Contacts</button>
+        </div>
+      </div>
+
+      <div class="telegram-banner">
+        <div>
+          <h3 style="color: #fff; margin-bottom: 0.2rem;">Join Official ADUSCF Telegram Group</h3>
+          <p style="font-size: 0.88rem; opacity: 0.95;">Stay updated with announcements, programs, and fellowship news.</p>
+        </div>
+        <a class="btn btn-light" href="https://t.me/httpaducsf" target="_blank" rel="noopener noreferrer">
+          Open Telegram (@httpaducsf)
+        </a>
+      </div>
+    </section>
+
+    <!-- MEMBER REGISTRATION PAGE -->
+    <section id="page-register" class="page">
+      <div class="card" style="max-width: 680px; margin: 0 auto;">
+        <h2>Fellowship Member Registration</h2>
+        <p class="muted" style="margin-bottom: 1.25rem;">
+          Fill out your details below to register in the ADUSCF Realtime Database.
+        </p>
+
+        <div id="member-alert"></div>
+
+        <form id="memberForm">
+          <div class="form-group">
+            <label for="mFullName">Full Name *</label>
+            <input type="text" id="mFullName" required placeholder="Enter full name" />
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="mPhone">Phone Number *</label>
+              <input type="tel" id="mPhone" required placeholder="e.g. 09..." />
+            </div>
+            <div class="form-group">
+              <label for="mGender">Gender *</label>
+              <select id="mGender" required>
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="mDepartment">Department *</label>
+              <input type="text" id="mDepartment" required placeholder="e.g. Computer Science" />
+            </div>
+            <div class="form-group">
+              <label for="mYear">Academic Year *</label>
+              <select id="mYear" required>
+                <option value="">Select year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="5th Year+">5th Year+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mTeam">Preferred Team / Ministry *</label>
+            <select id="mTeam" required>
+              <option value="">Select a team</option>
+              <option value="Evangelism Mobilizers Team">Evangelism Mobilizers Team</option>
+              <option value="Worship Team">Worship Team</option>
+              <option value="Pray Team">Pray Team</option>
+              <option value="Love and Care Team">Love and Care Team</option>
+              <option value="Fund Team">Fund Team</option>
+              <option value="Bible Study Team">Bible Study Team</option>
+              <option value="General Fellowship Member">General Fellowship Member</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="memberSubmitBtn">Submit Registration</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- RETREAT REGISTRATION PAGE -->
+    <section id="page-retreat" class="page">
+      <div class="card" style="max-width: 720px; margin: 0 auto;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+          <h2 style="margin-bottom: 0;">Fellowship Retreat Registration</h2>
+          <span id="retreat-status-badge" class="pill pill-closed">Checking...</span>
+        </div>
+
+        <!-- Closed State -->
+        <div id="retreat-closed-box" class="alert alert-danger hidden">
+          <strong>Retreat Registration is Currently Closed.</strong><br />
+          There is no active retreat program right now, so the retreat registration form/link is closed. It will open when the Admin enables a retreat program.
+        </div>
+
+        <!-- Open State -->
+        <div id="retreat-open-box" class="hidden">
+          <div class="payment-box">
+            <h3>Payment Details</h3>
+            <div class="payment-row">
+              <strong>CBE Account Name:</strong> Adigrat Unveristy christian student fellowship
+            </div>
+            <div class="payment-row">
+              <strong>CBE Account Number:</strong> <code>1000743110491</code>
+            </div>
+            <div class="payment-row">
+              <strong>Telebirr:</strong> <a class="phone-link" href="tel:0940099962">0940099962</a>
+            </div>
+          </div>
+
+          <div id="retreat-alert"></div>
+
+          <form id="retreatForm">
+            <div class="form-group">
+              <label for="rFullName">Full Name *</label>
+              <input type="text" id="rFullName" required placeholder="Enter full name" />
+            </div>
+
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="rPhone">Phone Number *</label>
+                <input type="tel" id="rPhone" required placeholder="e.g. 09..." />
+              </div>
+              <div class="form-group">
+                <label for="rDepartment">Department & Year *</label>
+                <input type="text" id="rDepartment" required placeholder="e.g. Engineering - 3rd Year" />
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="rMethod">Payment Method *</label>
+                <select id="rMethod" required>
+                  <option value="">Select payment method</option>
+                  <option value="CBE">CBE (1000743110491)</option>
+                  <option value="Telebirr">Telebirr (0940099962)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rTxRef">Transaction Reference / Receipt Code *</label>
+                <input type="text" id="rTxRef" required placeholder="Enter transaction ID / reference" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success" id="retreatSubmitBtn">Complete Retreat Registration</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS, LEADERS & PAYMENT PAGE -->
+    <section id="page-contacts" class="page">
+      <div class="grid-2" style="margin-bottom: 1.25rem;">
+        <div class="card">
+          <h2>Contact Us (GF)</h2>
+          <p class="muted" style="margin-bottom: 0.75rem;">Reach out to Graduates Fellowship (GF) contacts:</p>
+          <div class="contact-item">
+            <span><strong>GF Minte</strong></span>
+            <a class="phone-link" href="tel:0989386149">0989386149</a>
+          </div>
+          <div class="contact-item">
+            <span><strong>GF Gospel</strong></span>
+            <a class="phone-link" href="tel:0984618280">0984618280</a>
+          </div>
+          <div class="contact-item">
+            <span><strong>GF Yordanos</strong></span>
+            <a class="phone-link" href="tel:0989394466">0989394466</a>
+          </div>
+          <div class="contact-item">
+            <span><strong>GF Melikamu</strong></span>
+            <a class="phone-link" href="tel:0928020830">0928020830</a>
+          </div>
+          <div class="contact-item">
+            <span><strong>GF Marti</strong></span>
+            <a class="phone-link" href="tel:0940099962">0940099962</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Payment Details & Telegram</h2>
+          <div class="payment-box" style="margin-top: 0.65rem;">
+            <h3>Bank & Mobile Payment</h3>
+            <div class="payment-row">
+              <strong>CBE Account Name:</strong> Adigrat Unveristy christian student fellowship
+            </div>
+            <div class="payment-row">
+              <strong>CBE Account Number:</strong> <code>1000743110491</code>
+            </div>
+            <div class="payment-row">
+              <strong>Telebirr:</strong> <a class="phone-link" href="tel:0940099962">0940099962</a>
+            </div>
+          </div>
+
+          <h3>Official Telegram Group</h3>
+          <p class="muted" style="margin-bottom: 0.85rem;">Join our Telegram group for fellowship updates and announcements.</p>
+          <a class="btn btn-primary" href="https://t.me/httpaducsf" target="_blank" rel="noopener noreferrer">
+            Join Telegram Group (https://t.me/httpaducsf)
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Team Leaders</h2>
+        <p class="muted" style="margin-bottom: 0.85rem;">Direct phone contacts for ADUSCF ministry team leaders:</p>
+        <div class="grid-3">
+          <div class="card" style="box-shadow: none; background: var(--surface-soft);">
+            <h3>Evangelism Mobilizers Team</h3>
+            <div class="contact-item">
+              <span>Eyasu</span>
+              <a class="phone-link" href="tel:0994255761">0994255761</a>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow: none; background: var(--surface-soft);">
+            <h3>Worship Team Leaders</h3>
+            <div class="contact-item">
+              <span>Joss</span>
+              <a class="phone-link" href="tel:0994854704">0994854704</a>
+            </div>
+            <div class="contact-item">
+              <span>Helen</span>
+              <a class="phone-link" href="tel:0901583779">0901583779</a>
+            </div>
+            <div class="contact-item">
+              <span>Feven</span>
+              <a class="phone-link" href="tel:0963547631">0963547631</a>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow: none; background: var(--surface-soft);">
+            <h3>Pray Team Leaders</h3>
+            <div class="contact-item">
+              <span>Tsegab</span>
+              <a class="phone-link" href="tel:0988058790">0988058790</a>
+            </div>
+            <div class="contact-item">
+              <span>Aman</span>
+              <a class="phone-link" href="tel:+251926187368">+251926187368</a>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow: none; background: var(--surface-soft);">
+            <h3>Love and Care Team</h3>
+            <div class="contact-item">
+              <span>Kalkidan</span>
+              <a class="phone-link" href="tel:+251947027234">+251947027234</a>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow: none; background: var(--surface-soft);">
+            <h3>Fund Team Leader</h3>
+            <div class="contact-item">
+              <span>Samuel</span>
+              <a class="phone-link" href="tel:+251926922329">+251926922329</a>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow: none; background: var(--surface-soft);">
+            <h3>Bible Study Team Leader</h3>
+            <div class="contact-item">
+              <span>Natinael</span>
+              <a class="phone-link" href="tel:0966899824">0966899824</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD PAGE -->
+    <section id="page-admin" class="page">
+      <!-- Admin Login -->
+      <div id="admin-login-card" class="card" style="max-width: 440px; margin: 0 auto;">
+        <h2>Admin Dashboard Login</h2>
+        <p class="muted" style="margin-bottom: 1rem;">
+          Enter the admin password to manage retreat registration status and view database records.
+        </p>
+        <div id="admin-login-alert"></div>
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label for="adminPasswordInput">Admin Password</label>
+            <input type="password" id="adminPasswordInput" required placeholder="Enter admin password" />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Unlock Admin Dashboard</button>
+        </form>
+      </div>
+
+      <!-- Admin Panel -->
+      <div id="admin-panel" class="hidden">
+        <div class="card" style="margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+            <div>
+              <h2>Admin Controls</h2>
+              <p class="muted">Toggle Retreat Registration when a retreat program is active or closed.</p>
+            </div>
+            <button class="btn btn-outline" style="color: var(--danger); border-color: var(--danger);" onclick="logoutAdmin()">
+              Lock Dashboard
+            </button>
+          </div>
+
+          <div style="margin-top: 1.1rem; padding: 1rem; border-radius: 12px; background: var(--surface-soft); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+            <div>
+              <strong>Retreat Registration Status:</strong>
+              <span id="admin-retreat-status" class="pill pill-closed" style="margin-left: 0.4rem;">Closed</span>
+            </div>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+              <button class="btn btn-success btn-sm" onclick="setRetreatOpen(true)">Open Retreat Registration</button>
+              <button class="btn btn-danger btn-sm" onclick="setRetreatOpen(false)">Close Retreat Registration</button>
+            </div>
+          </div>
+
+          <div class="stats-grid" style="margin-top: 1.1rem; margin-bottom: 0;">
+            <div class="stat-box">
+              <div class="muted">Registered Members</div>
+              <div class="stat-num" id="stat-members">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="muted">Retreat Registrants</div>
+              <div class="stat-num" id="stat-retreat">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 1.25rem;">
+          <h2>Registered Members (Realtime Database)</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Full Name</th>
+                  <th>Phone</th>
+                  <th>Gender</th>
+                  <th>Department</th>
+                  <th>Year</th>
+                  <th>Team</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="members-tbody">
+                <tr><td colspan="7" class="muted">No member records loaded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Retreat Registrants (Realtime Database)</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Full Name</th>
+                  <th>Phone</th>
+                  <th>Department & Year</th>
+                  <th>Payment Method</th>
+                  <th>Reference</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="retreat-tbody">
+                <tr><td colspan="6" class="muted">No retreat records loaded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+
+    // Your Firebase configuration (add your Realtime Database URL if not shown above)
+    const firebaseConfig = {
+      apiKey: "AIzaSyD33teW8fBn_0UtWS8UGUy_SqVjQP8EPUo",
+      authDomain: "aducsf-app.firebaseapp.com",
+      databaseURL: "https://aduscf-app-default-rtdb.firebaseio.com",
+      projectId: "aducsf-app",
+      storageBucket: "aducsf-app.firebasestorage.app",
+      messagingSenderId: "261283417039",
+      appId: "1:261283417039:web:8e509bea77903c58c620ba",
+      measurementId: "G-8WEZF3DD50"
+    };
+
+    const ADMIN_PASSWORD = "Josina47";
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const retreatStatusRef = ref(db, "settings/retreatOpen");
+    const membersRef = ref(db, "members");
+    const retreatRegistrationsRef = ref(db, "retreatRegistrations");
+
+    let isRetreatOpen = false;
+    let isAdminAuthenticated = false;
+
+    // Navigation
+    window.navigate = function (pageName) {
+      document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
+      document.querySelectorAll(".nav-btn").forEach((b) => b.classList.remove("active"));
+
+      const targetPage = document.getElementById("page-" + pageName);
+      const targetBtn = document.querySelector(`.nav-btn[data-page="${pageName}"]`);
+      if (targetPage) targetPage.classList.add("active");
+      if (targetBtn) targetBtn.classList.add("active");
+
+      if (pageName === "retreat") {
+        renderRetreatState();
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    function renderRetreatState() {
+      const homeStatus = document.getElementById("home-retreat-status");
+      const badge = document.getElementById("retreat-status-badge");
+      const closedBox = document.getElementById("retreat-closed-box");
+      const openBox = document.getElementById("retreat-open-box");
+      const adminBadge = document.getElementById("admin-retreat-status");
+
+      if (isRetreatOpen) {
+        if (homeStatus) homeStatus.innerHTML = `<span class="pill pill-open">Open Now</span>`;
+        if (badge) {
+          badge.textContent = "Open";
+          badge.className = "pill pill-open";
+        }
+        if (closedBox) closedBox.classList.add("hidden");
+        if (openBox) openBox.classList.remove("hidden");
+        if (adminBadge) {
+          adminBadge.textContent = "Open";
+          adminBadge.className = "pill pill-open";
+        }
+      } else {
+        if (homeStatus) homeStatus.innerHTML = `<span class="pill pill-closed">Closed</span>`;
+        if (badge) {
+          badge.textContent = "Closed";
+          badge.className = "pill pill-closed";
+        }
+        if (closedBox) closedBox.classList.remove("hidden");
+        if (openBox) openBox.classList.add("hidden");
+        if (adminBadge) {
+          adminBadge.textContent = "Closed";
+          adminBadge.className = "pill pill-closed";
+        }
+      }
+    }
+
+    // Listen to Retreat Open/Close setting from Firebase
+    onValue(retreatStatusRef, (snapshot) => {
+      isRetreatOpen = Boolean(snapshot.val());
+      renderRetreatState();
+    });
+
+    // Member Form Submit
+    document.getElementById("memberForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const alertBox = document.getElementById("member-alert");
+      const submitBtn = document.getElementById("memberSubmitBtn");
+      submitBtn.disabled = true;
+      alertBox.innerHTML = "";
+
+      const payload = {
+        fullName: document.getElementById("mFullName").value.trim(),
+        phone: document.getElementById("mPhone").value.trim(),
+        gender: document.getElementById("mGender").value,
+        department: document.getElementById("mDepartment").value.trim(),
+        year: document.getElementById("mYear").value,
+        team: document.getElementById("mTeam").value,
+        createdAt: new Date().toISOString()
+      };
+
+      try {
+        await push(membersRef, payload);
+        alertBox.innerHTML = `<div class="alert alert-success">Registration submitted successfully! Welcome to ADUSCF.</div>`;
+        e.target.reset();
+      } catch (err) {
+        alertBox.innerHTML = `<div class="alert alert-danger">Error saving registration: ${err.message}</div>`;
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Retreat Form Submit
+    document.getElementById("retreatForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const alertBox = document.getElementById("retreat-alert");
+      const submitBtn = document.getElementById("retreatSubmitBtn");
+      alertBox.innerHTML = "";
+
+      if (!isRetreatOpen) {
+        alertBox.innerHTML = `<div class="alert alert-danger">Retreat registration is currently closed.</div>`;
+        return;
+      }
+
+      submitBtn.disabled = true;
+
+      const payload = {
+        fullName: document.getElementById("rFullName").value.trim(),
+        phone: document.getElementById("rPhone").value.trim(),
+        departmentAndYear: document.getElementById("rDepartment").value.trim(),
+        paymentMethod: document.getElementById("rMethod").value,
+        txRef: document.getElementById("rTxRef").value.trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      try {
+        await push(retreatRegistrationsRef, payload);
+        alertBox.innerHTML = `<div class="alert alert-success">Retreat registration recorded! Please keep your payment reference safe.</div>`;
+        e.target.reset();
+      } catch (err) {
+        alertBox.innerHTML = `<div class="alert alert-danger">Error saving retreat registration: ${err.message}</div>`;
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Admin Login
+    document.getElementById("adminLoginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = document.getElementById("adminPasswordInput");
+      const alertBox = document.getElementById("admin-login-alert");
+
+      if (input.value === ADMIN_PASSWORD) {
+        isAdminAuthenticated = true;
+        alertBox.innerHTML = "";
+        input.value = "";
+        document.getElementById("admin-login-card").classList.add("hidden");
+        document.getElementById("admin-panel").classList.remove("hidden");
+      } else {
+        alertBox.innerHTML = `<div class="alert alert-danger">Incorrect admin password.</div>`;
+      }
+    });
+
+    window.logoutAdmin = function () {
+      isAdminAuthenticated = false;
+      document.getElementById("admin-panel").classList.add("hidden");
+      document.getElementById("admin-login-card").classList.remove("hidden");
+    };
+
+    window.setRetreatOpen = async function (open) {
+      try {
+        await set(retreatStatusRef, open);
+      } catch (err) {
+        alert("Failed to update retreat status: " + err.message);
+      }
+    };
+
+    function formatDate(iso) {
+      if (!iso) return "-";
+      const d = new Date(iso);
+      return isNaN(d.getTime()) ? iso : d.toLocaleString();
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    // Load Members for Admin
+    onValue(membersRef, (snapshot) => {
+      const data = snapshot.val() || {};
+      const rows = Object.values(data).reverse();
+      document.getElementById("stat-members").textContent = rows.length;
+
+      const tbody = document.getElementById("members-tbody");
+      if (!rows.length) {
+        tbody.innerHTML = `<tr><td colspan="7" class="muted">No member records yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = rows
+        .map(
+          (m) => `
+          <tr>
+            <td>${escapeHtml(m.fullName)}</td>
+            <td>${escapeHtml(m.phone)}</td>
+            <td>${escapeHtml(m.gender)}</td>
+            <td>${escapeHtml(m.department)}</td>
+            <td>${escapeHtml(m.year)}</td>
+            <td>${escapeHtml(m.team)}</td>
+            <td>${escapeHtml(formatDate(m.createdAt))}</td>
+          </tr>`
+        )
+        .join("");
+    });
+
+    // Load Retreat Registrants for Admin
+    onValue(retreatRegistrationsRef, (snapshot) => {
+      const data = snapshot.val() || {};
+      const rows = Object.values(data).reverse();
+      document.getElementById("stat-retreat").textContent = rows.length;
+
+      const tbody = document.getElementById("retreat-tbody");
+      if (!rows.length) {
+        tbody.innerHTML = `<tr><td colspan="6" class="muted">No retreat registrations yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = rows
+        .map(
+          (r) => `
+          <tr>
+            <td>${escapeHtml(r.fullName)}</td>
+            <td>${escapeHtml(r.phone)}</td>
+            <td>${escapeHtml(r.departmentAndYear)}</td>
+            <td>${escapeHtml(r.paymentMethod)}</td>
+            <td>${escapeHtml(r.txRef)}</td>
+            <td>${escapeHtml(formatDate(r.createdAt))}</td>
+          </tr>`
+        )
+        .join("");
+    });
+  </script>
+</body>
+</html>
