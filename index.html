@@ -16,7 +16,6 @@
       --primary-dark: #1e3a8a;
       --primary-light: #dbeafe;
       --accent: #0f766e;
-      --accent-light: #ccfbf1;
       --danger: #dc2626;
       --danger-light: #fee2e2;
       --success: #15803d;
@@ -30,11 +29,7 @@
       --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 10px -6px rgba(15, 23, 42, 0.04);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -44,7 +39,6 @@
       min-height: 100vh;
     }
 
-    /* Header & Navigation */
     header {
       position: sticky;
       top: 0;
@@ -65,409 +59,142 @@
       flex-wrap: wrap;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      cursor: pointer;
-    }
+    .brand { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
 
     .brand-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 11px;
+      width: 42px; height: 42px; border-radius: 11px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff;
-      font-weight: 800;
-      font-size: 0.95rem;
-      display: grid;
-      place-items: center;
-      letter-spacing: 0.5px;
+      color: #fff; font-weight: 800; font-size: 0.95rem;
+      display: grid; place-items: center;
     }
 
-    .brand-title {
-      font-weight: 800;
-      font-size: 1.05rem;
-      color: var(--text);
-    }
+    .brand-title { font-weight: 800; font-size: 1.05rem; color: var(--text); }
+    .brand-sub { font-size: 0.75rem; color: var(--muted); }
 
-    .brand-sub {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
+    nav { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
 
     .nav-btn {
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 0.88rem;
-      padding: 0.5rem 0.85rem;
-      border-radius: 9px;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      border: none; background: transparent; color: var(--muted);
+      font-weight: 600; font-size: 0.88rem; padding: 0.5rem 0.85rem;
+      border-radius: 9px; cursor: pointer; transition: all 0.2s ease;
     }
 
-    .nav-btn:hover {
-      background: var(--surface-soft);
-      color: var(--text);
-    }
+    .nav-btn:hover { background: var(--surface-soft); color: var(--text); }
+    .nav-btn.active { background: var(--primary); color: #fff; }
 
-    .nav-btn.active {
-      background: var(--primary);
-      color: #fff;
-    }
+    main { max-width: 1160px; margin: 0 auto; padding: 1.75rem 1.25rem 3.5rem; }
 
-    /* Main Container */
-    main {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 1.75rem 1.25rem 3.5rem;
-    }
-
-    .page {
-      display: none;
-      animation: fadeIn 0.25s ease;
-    }
-
-    .page.active {
-      display: block;
-    }
+    .page { display: none; animation: fadeIn 0.25s ease; }
+    .page.active { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hero */
     .hero {
       background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #0f766e 100%);
-      color: #fff;
-      border-radius: 20px;
-      padding: 2.25rem 1.75rem;
-      box-shadow: var(--shadow);
-      margin-bottom: 1.75rem;
+      color: #fff; border-radius: 20px; padding: 2.25rem 1.75rem;
+      box-shadow: var(--shadow); margin-bottom: 1.75rem;
     }
 
     .hero-tag {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.16);
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      margin-bottom: 0.9rem;
+      display: inline-block; background: rgba(255, 255, 255, 0.16);
+      padding: 0.3rem 0.8rem; border-radius: 999px;
+      font-size: 0.78rem; font-weight: 600; margin-bottom: 0.9rem;
     }
 
-    .hero h1 {
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 0.75rem;
-    }
+    .hero h1 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem; }
+    .hero p { max-width: 720px; color: rgba(255, 255, 255, 0.92); font-size: 0.98rem; margin-bottom: 1.4rem; }
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-    .hero p {
-      max-width: 720px;
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 0.98rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    /* Cards & Grids */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.15rem;
-    }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.15rem; }
 
     .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-      box-shadow: var(--shadow);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow);
     }
 
-    .card h2 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.45rem;
-    }
+    .card h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.45rem; }
+    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-dark); }
+    .muted { color: var(--muted); font-size: 0.9rem; }
 
-    .card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--primary-dark);
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    /* Buttons & Badges */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      border: none;
-      border-radius: 10px;
-      padding: 0.7rem 1.15rem;
-      font-weight: 600;
-      font-size: 0.92rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s ease;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+      border: none; border-radius: 10px; padding: 0.7rem 1.15rem;
+      font-weight: 600; font-size: 0.92rem; cursor: pointer;
+      text-decoration: none; transition: all 0.2s ease;
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover:not(:disabled) {
-      background: var(--primary-dark);
-    }
-
-    .btn-light {
-      background: #fff;
-      color: var(--primary-dark);
-    }
-
-    .btn-light:hover {
-      background: var(--surface-soft);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.45);
-      color: #fff;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .btn-success {
-      background: var(--success);
-      color: #fff;
-    }
-
-    .btn-danger {
-      background: var(--danger);
-      color: #fff;
-    }
-
-    .btn-sm {
-      padding: 0.42rem 0.75rem;
-      font-size: 0.8rem;
-      border-radius: 8px;
-    }
-
-    .btn:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn-light { background: #fff; color: var(--primary-dark); }
+    .btn-light:hover { background: var(--surface-soft); }
+    .btn-outline { background: transparent; border: 1px solid rgba(255, 255, 255, 0.45); color: #fff; }
+    .btn-outline:hover { background: rgba(255, 255, 255, 0.12); }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-sm { padding: 0.42rem 0.75rem; font-size: 0.8rem; border-radius: 8px; }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; }
 
     .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.28rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.28rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700;
     }
 
-    .pill-open {
-      background: var(--success-light);
-      color: var(--success);
-    }
+    .pill-open { background: var(--success-light); color: var(--success); }
+    .pill-closed { background: var(--danger-light); color: var(--danger); }
 
-    .pill-closed {
-      background: var(--danger-light);
-      color: var(--danger);
-    }
-
-    /* Forms */
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.88rem;
-      margin-bottom: 0.35rem;
-      color: var(--text);
-    }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 0.35rem; color: var(--text); }
 
     input, select, textarea {
-      width: 100%;
-      padding: 0.68rem 0.85rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 0.92rem;
-      background: #fff;
-      color: var(--text);
+      width: 100%; padding: 0.68rem 0.85rem; border: 1px solid var(--border);
+      border-radius: 10px; font-family: inherit; font-size: 0.92rem;
+      background: #fff; color: var(--text);
     }
 
     input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px var(--primary-light);
+      outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light);
     }
 
-    .alert {
-      padding: 0.9rem 1rem;
-      border-radius: 11px;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
+    .alert { padding: 0.9rem 1rem; border-radius: 11px; font-size: 0.9rem; margin-bottom: 1rem; }
+    .alert-success { background: var(--success-light); color: var(--success); border: 1px solid #86efac; }
+    .alert-danger { background: var(--danger-light); color: var(--danger); border: 1px solid #fca5a5; }
 
-    .alert-success {
-      background: var(--success-light);
-      color: var(--success);
-      border: 1px solid #86efac;
-    }
-
-    .alert-danger {
-      background: var(--danger-light);
-      color: var(--danger);
-      border: 1px solid #fca5a5;
-    }
-
-    .alert-warning {
-      background: var(--warning-light);
-      color: var(--warning);
-      border: 1px solid #fcd34d;
-    }
-
-    /* Lists & Contact Rows */
     .contact-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding: 0.65rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 0.75rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem;
     }
+    .contact-item:last-child { border-bottom: none; }
 
-    .contact-item:last-child {
-      border-bottom: none;
-    }
-
-    .phone-link {
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .phone-link:hover {
-      text-decoration: underline;
-    }
+    .phone-link { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .phone-link:hover { text-decoration: underline; }
 
     .payment-box {
-      background: var(--surface-soft);
-      border: 1px dashed #93c5fd;
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1.15rem;
+      background: var(--surface-soft); border: 1px dashed #93c5fd;
+      border-radius: 12px; padding: 1rem; margin-bottom: 1.15rem;
     }
+    .payment-row { margin-bottom: 0.45rem; font-size: 0.9rem; }
+    .payment-row:last-child { margin-bottom: 0; }
 
-    .payment-row {
-      margin-bottom: 0.45rem;
-      font-size: 0.9rem;
-    }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .stat-box { background: var(--surface-soft); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+    .stat-num { font-size: 1.55rem; font-weight: 800; color: var(--primary-dark); }
 
-    .payment-row:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Admin */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .stat-box {
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1rem;
-    }
-
-    .stat-num {
-      font-size: 1.55rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      margin-top: 0.75rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 0.65rem 0.75rem;
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-    }
-
-    th {
-      background: var(--surface-soft);
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
+    .table-wrap { overflow-x: auto; margin-top: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { text-align: left; padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    th { background: var(--surface-soft); font-weight: 700; color: var(--primary-dark); }
 
     .telegram-banner {
-      margin-top: 1.25rem;
-      background: linear-gradient(135deg, #0284c7, #0369a1);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 1.25rem 1.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+      margin-top: 1.25rem; background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff; border-radius: var(--radius); padding: 1.25rem 1.4rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
     }
 
-    .hidden {
-      display: none !important;
-    }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -623,13 +350,11 @@
           <span id="retreat-status-badge" class="pill pill-closed">Checking...</span>
         </div>
 
-        <!-- Closed State -->
         <div id="retreat-closed-box" class="alert alert-danger hidden">
           <strong>Retreat Registration is Currently Closed.</strong><br />
           There is no active retreat program right now, so the retreat registration form/link is closed. It will open when the Admin enables a retreat program.
         </div>
 
-        <!-- Open State -->
         <div id="retreat-open-box" class="hidden">
           <div class="payment-box">
             <h3>Payment Details</h3>
@@ -804,7 +529,6 @@
 
     <!-- ADMIN DASHBOARD PAGE -->
     <section id="page-admin" class="page">
-      <!-- Admin Login -->
       <div id="admin-login-card" class="card" style="max-width: 440px; margin: 0 auto;">
         <h2>Admin Dashboard Login</h2>
         <p class="muted" style="margin-bottom: 1rem;">
@@ -820,7 +544,6 @@
         </form>
       </div>
 
-      <!-- Admin Panel -->
       <div id="admin-panel" class="hidden">
         <div class="card" style="margin-bottom: 1.25rem;">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
@@ -893,7 +616,7 @@
                 </tr>
               </thead>
               <tbody id="retreat-tbody">
-                <tr><td colspan="6" class="muted">No retreat records loaded yet.</td></tr>
+                <tr><td colspan="6" class="muted">No retreat registrations yet.</td></tr>
               </tbody>
             </table>
           </div>
@@ -902,35 +625,13 @@
     </section>
   </main>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
-
-    // Your Firebase configuration (add your Realtime Database URL if not shown above)
-    const firebaseConfig = {
-      apiKey: "AIzaSyD33teW8fBn_0UtWS8UGUy_SqVjQP8EPUo",
-      authDomain: "aducsf-app.firebaseapp.com",
-      databaseURL: "https://aduscf-app-default-rtdb.firebaseio.com",
-      projectId: "aducsf-app",
-      storageBucket: "aducsf-app.firebasestorage.app",
-      messagingSenderId: "261283417039",
-      appId: "1:261283417039:web:8e509bea77903c58c620ba",
-      measurementId: "G-8WEZF3DD50"
-    };
-
+  <script>
+    const DB_URL = "https://aducsf-app-default-rtdb.firebaseio.com";
     const ADMIN_PASSWORD = "Josina47";
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    const retreatStatusRef = ref(db, "settings/retreatOpen");
-    const membersRef = ref(db, "members");
-    const retreatRegistrationsRef = ref(db, "retreatRegistrations");
 
     let isRetreatOpen = false;
     let isAdminAuthenticated = false;
 
-    // Navigation
     window.navigate = function (pageName) {
       document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
       document.querySelectorAll(".nav-btn").forEach((b) => b.classList.remove("active"));
@@ -941,7 +642,10 @@
       if (targetBtn) targetBtn.classList.add("active");
 
       if (pageName === "retreat") {
-        renderRetreatState();
+        fetchRetreatStatus();
+      }
+      if (pageName === "admin" && isAdminAuthenticated) {
+        loadAdminData();
       }
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
@@ -955,43 +659,55 @@
 
       if (isRetreatOpen) {
         if (homeStatus) homeStatus.innerHTML = `<span class="pill pill-open">Open Now</span>`;
-        if (badge) {
-          badge.textContent = "Open";
-          badge.className = "pill pill-open";
-        }
+        if (badge) { badge.textContent = "Open"; badge.className = "pill pill-open"; }
         if (closedBox) closedBox.classList.add("hidden");
         if (openBox) openBox.classList.remove("hidden");
-        if (adminBadge) {
-          adminBadge.textContent = "Open";
-          adminBadge.className = "pill pill-open";
-        }
+        if (adminBadge) { adminBadge.textContent = "Open"; adminBadge.className = "pill pill-open"; }
       } else {
         if (homeStatus) homeStatus.innerHTML = `<span class="pill pill-closed">Closed</span>`;
-        if (badge) {
-          badge.textContent = "Closed";
-          badge.className = "pill pill-closed";
-        }
+        if (badge) { badge.textContent = "Closed"; badge.className = "pill pill-closed"; }
         if (closedBox) closedBox.classList.remove("hidden");
         if (openBox) openBox.classList.add("hidden");
-        if (adminBadge) {
-          adminBadge.textContent = "Closed";
-          adminBadge.className = "pill pill-closed";
-        }
+        if (adminBadge) { adminBadge.textContent = "Closed"; adminBadge.className = "pill pill-closed"; }
       }
     }
 
-    // Listen to Retreat Open/Close setting from Firebase
-    onValue(retreatStatusRef, (snapshot) => {
-      isRetreatOpen = Boolean(snapshot.val());
-      renderRetreatState();
-    });
+    async function fetchWithTimeout(url, options = {}, timeoutMs = 10000) {
+      const controller = new AbortController();
+      const id = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const res = await fetch(url, { ...options, signal: controller.signal });
+        clearTimeout(id);
+        return res;
+      } catch (err) {
+        clearTimeout(id);
+        throw err;
+      }
+    }
+
+    async function fetchRetreatStatus() {
+      try {
+        const res = await fetchWithTimeout(`${DB_URL}/settings/retreatOpen.json`);
+        if (res.ok) {
+          const val = await res.json();
+          isRetreatOpen = Boolean(val);
+        }
+      } catch (_) {
+        // Keep current state on network hiccup
+      } finally {
+        renderRetreatState();
+      }
+    }
 
     // Member Form Submit
     document.getElementById("memberForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const alertBox = document.getElementById("member-alert");
       const submitBtn = document.getElementById("memberSubmitBtn");
+      const originalText = submitBtn.textContent;
+
       submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
       alertBox.innerHTML = "";
 
       const payload = {
@@ -1005,13 +721,27 @@
       };
 
       try {
-        await push(membersRef, payload);
+        const res = await fetchWithTimeout(`${DB_URL}/members.json`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server responded with status ${res.status}`);
+        }
+
         alertBox.innerHTML = `<div class="alert alert-success">Registration submitted successfully! Welcome to ADUSCF.</div>`;
         e.target.reset();
+        if (isAdminAuthenticated) loadAdminData();
       } catch (err) {
-        alertBox.innerHTML = `<div class="alert alert-danger">Error saving registration: ${err.message}</div>`;
+        const msg = err.name === "AbortError"
+          ? "Request timed out. Please check your internet connection and try again."
+          : err.message;
+        alertBox.innerHTML = `<div class="alert alert-danger">Error saving registration: ${escapeHtml(msg)}</div>`;
       } finally {
         submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
       }
     });
 
@@ -1020,6 +750,7 @@
       e.preventDefault();
       const alertBox = document.getElementById("retreat-alert");
       const submitBtn = document.getElementById("retreatSubmitBtn");
+      const originalText = submitBtn.textContent;
       alertBox.innerHTML = "";
 
       if (!isRetreatOpen) {
@@ -1028,6 +759,7 @@
       }
 
       submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
 
       const payload = {
         fullName: document.getElementById("rFullName").value.trim(),
@@ -1039,13 +771,27 @@
       };
 
       try {
-        await push(retreatRegistrationsRef, payload);
+        const res = await fetchWithTimeout(`${DB_URL}/retreatRegistrations.json`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error(`Server responded with status ${res.status}`);
+        }
+
         alertBox.innerHTML = `<div class="alert alert-success">Retreat registration recorded! Please keep your payment reference safe.</div>`;
         e.target.reset();
+        if (isAdminAuthenticated) loadAdminData();
       } catch (err) {
-        alertBox.innerHTML = `<div class="alert alert-danger">Error saving retreat registration: ${err.message}</div>`;
+        const msg = err.name === "AbortError"
+          ? "Request timed out. Please check your internet connection and try again."
+          : err.message;
+        alertBox.innerHTML = `<div class="alert alert-danger">Error saving retreat registration: ${escapeHtml(msg)}</div>`;
       } finally {
         submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
       }
     });
 
@@ -1061,6 +807,7 @@
         input.value = "";
         document.getElementById("admin-login-card").classList.add("hidden");
         document.getElementById("admin-panel").classList.remove("hidden");
+        loadAdminData();
       } else {
         alertBox.innerHTML = `<div class="alert alert-danger">Incorrect admin password.</div>`;
       }
@@ -1074,7 +821,14 @@
 
     window.setRetreatOpen = async function (open) {
       try {
-        await set(retreatStatusRef, open);
+        const res = await fetchWithTimeout(`${DB_URL}/settings/retreatOpen.json`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(open)
+        });
+        if (!res.ok) throw new Error("Status " + res.status);
+        isRetreatOpen = open;
+        renderRetreatState();
       } catch (err) {
         alert("Failed to update retreat status: " + err.message);
       }
@@ -1094,60 +848,53 @@
         .replace(/"/g, "&quot;");
     }
 
-    // Load Members for Admin
-    onValue(membersRef, (snapshot) => {
-      const data = snapshot.val() || {};
-      const rows = Object.values(data).reverse();
-      document.getElementById("stat-members").textContent = rows.length;
+    async function loadAdminData() {
+      try {
+        const [mRes, rRes] = await Promise.all([
+          fetchWithTimeout(`${DB_URL}/members.json`),
+          fetchWithTimeout(`${DB_URL}/retreatRegistrations.json`)
+        ]);
 
-      const tbody = document.getElementById("members-tbody");
-      if (!rows.length) {
-        tbody.innerHTML = `<tr><td colspan="7" class="muted">No member records yet.</td></tr>`;
-        return;
+        const mData = (mRes.ok ? await mRes.json() : {}) || {};
+        const rData = (rRes.ok ? await rRes.json() : {}) || {};
+
+        const mRows = Object.values(mData).reverse();
+        document.getElementById("stat-members").textContent = mRows.length;
+        const mBody = document.getElementById("members-tbody");
+        mBody.innerHTML = mRows.length
+          ? mRows.map((m) => `
+              <tr>
+                <td>${escapeHtml(m.fullName)}</td>
+                <td>${escapeHtml(m.phone)}</td>
+                <td>${escapeHtml(m.gender)}</td>
+                <td>${escapeHtml(m.department)}</td>
+                <td>${escapeHtml(m.year)}</td>
+                <td>${escapeHtml(m.team)}</td>
+                <td>${escapeHtml(formatDate(m.createdAt))}</td>
+              </tr>`).join("")
+          : `<tr><td colspan="7" class="muted">No member records yet.</td></tr>`;
+
+        const rRows = Object.values(rData).reverse();
+        document.getElementById("stat-retreat").textContent = rRows.length;
+        const rBody = document.getElementById("retreat-tbody");
+        rBody.innerHTML = rRows.length
+          ? rRows.map((r) => `
+              <tr>
+                <td>${escapeHtml(r.fullName)}</td>
+                <td>${escapeHtml(r.phone)}</td>
+                <td>${escapeHtml(r.departmentAndYear)}</td>
+                <td>${escapeHtml(r.paymentMethod)}</td>
+                <td>${escapeHtml(r.txRef)}</td>
+                <td>${escapeHtml(formatDate(r.createdAt))}</td>
+              </tr>`).join("")
+          : `<tr><td colspan="6" class="muted">No retreat registrations yet.</td></tr>`;
+      } catch (err) {
+        console.error("Failed to load admin data:", err);
       }
+    }
 
-      tbody.innerHTML = rows
-        .map(
-          (m) => `
-          <tr>
-            <td>${escapeHtml(m.fullName)}</td>
-            <td>${escapeHtml(m.phone)}</td>
-            <td>${escapeHtml(m.gender)}</td>
-            <td>${escapeHtml(m.department)}</td>
-            <td>${escapeHtml(m.year)}</td>
-            <td>${escapeHtml(m.team)}</td>
-            <td>${escapeHtml(formatDate(m.createdAt))}</td>
-          </tr>`
-        )
-        .join("");
-    });
-
-    // Load Retreat Registrants for Admin
-    onValue(retreatRegistrationsRef, (snapshot) => {
-      const data = snapshot.val() || {};
-      const rows = Object.values(data).reverse();
-      document.getElementById("stat-retreat").textContent = rows.length;
-
-      const tbody = document.getElementById("retreat-tbody");
-      if (!rows.length) {
-        tbody.innerHTML = `<tr><td colspan="6" class="muted">No retreat registrations yet.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = rows
-        .map(
-          (r) => `
-          <tr>
-            <td>${escapeHtml(r.fullName)}</td>
-            <td>${escapeHtml(r.phone)}</td>
-            <td>${escapeHtml(r.departmentAndYear)}</td>
-            <td>${escapeHtml(r.paymentMethod)}</td>
-            <td>${escapeHtml(r.txRef)}</td>
-            <td>${escapeHtml(formatDate(r.createdAt))}</td>
-          </tr>`
-        )
-        .join("");
-    });
+    // Initial load
+    fetchRetreatStatus();
   </script>
 </body>
 </html>
